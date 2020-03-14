@@ -1,0 +1,192 @@
+% https://github.com/integeruser/yet-another-latex-thesis-template
+\documentclass[a4paper]{book}
+
+\usepackage[british]{babel}
+
+\usepackage[scaled=.98,sups]{XCharter}
+\usepackage[scaled=1.04,varqu,varl]{inconsolata}
+\usepackage[type1]{cabin}
+\usepackage[libertine,vvarbb,scaled=1.05]{newtxmath}
+\usepackage[cal=boondoxo]{mathalfa}
+\linespread{1.04}
+
+\usepackage{sectsty}
+\sectionfont{\usefont{T1}{qhv}{b}{n}}
+\subsectionfont{\usefont{T1}{qhv}{b}{n}}
+\subsubsectionfont{\usefont{T1}{qhv}{b}{n}}
+
+\usepackage[titles]{tocloft}
+\renewcommand{\cftchapfont}{\usefont{T1}{qhv}{b}{n}}
+\renewcommand{\cftsecfont}{\usefont{T1}{bch}{m}{n}}
+\renewcommand{\cftsubsecfont}{\usefont{T1}{bch}{m}{n}}
+\renewcommand{\cftsubsubsecfont}{\usefont{T1}{bch}{m}{n}}
+\renewcommand{\cftchappagefont}{\ttfamily\footnotesize\bfseries}
+\renewcommand{\cftsecpagefont}{\ttfamily\footnotesize}
+\renewcommand{\cftsubsecpagefont}{\ttfamily\footnotesize}
+\renewcommand{\cftsubsubsecpagefont}{\ttfamily\footnotesize}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+    {\usefont{T1}{qhv}{b}{n}\huge}
+    {\chaptertitlename\ \thechapter}
+    {20pt}
+    {}
+    [\vspace{1ex}{\titlerule[1.5pt]}]
+
+\usepackage[final,protrusion=true]{microtype}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+\usepackage{xcolor}
+\usepackage{listings}% to load before cleveref for enabling \cref to code listings
+
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
+\hypersetup{colorlinks,citecolor=black,linkcolor=black,urlcolor=[HTML]{AA0736}}
+\usepackage{cleveref}
+
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\newcommand*{\newdualentry}[5][]{% from the glossaries package docs
+    \newglossaryentry{main-#2}{%
+        name={#4},%
+        text={#3\glsadd{#2}},%
+        description={#5},%
+        #1
+    }%
+    \newacronym{#2}{#3\glsadd{main-#2}}{#4}%
+}
+\input{content/gls}
+\makenoidxglossaries
+\glsunset{cpu}
+\glsunset{gui}
+\glsunset{ip}
+\glsunset{mac}
+\glsunset{ram}
+\glsunset{sdk}
+\glsunset{udp}
+\glsunset{uuid}
+
+\usepackage{emptypage}% for preventing page numbers and headings from appearing on empty pages
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RE]{\nouppercase\leftmark}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\nouppercase\rightmark}
+
+\usepackage[skip=7.5pt]{caption}% for setting the vertical space between the caption and the figure/table/whatever
+
+\usepackage[autopunct,autostyle]{csquotes}
+
+\usepackage[backref=true,block=ragged,citereset=chapter,citestyle=verbose]{biblatex}
+\DefineBibliographyStrings{english}{%
+    backrefpage  = {see p.},%
+    backrefpages = {see pp.},%
+}
+\AtEveryCitekey{%
+    \clearfield{urlyear}%
+    \clearfield{note}%
+}
+\addbibresource{content/bib.bib}
+
+\usepackage{parskip}
+\usepackage{pdfpages}
+\usepackage[binary-units=true]{siunitx}
+
+\usepackage{etoolbox}% for \ifstrempty
+
+\usepackage{blindtext}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+\lstdefinestyle{base} {
+    backgroundcolor=\color[HTML]{EFF0F1},
+    basicstyle=\ttfamily,
+    breakatwhitespace=true,
+    breaklines=true,
+    columns=fullflexible,
+    commentstyle=\color[HTML]{858C93},
+    keywordstyle=\color[HTML]{101094},
+    stringstyle=\color[HTML]{7D2727},
+    keepspaces=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+}
+\lstdefinestyle{out} {
+    style=base,
+    basicstyle=\ttfamily\lst@ifdisplaystyle\footnotesize\fi,% (using \lst@ifdisplaystyle to preserve normal font size for \lstinline in captions)
+    frame=lt,
+    framerule=0.1pt,
+}
+\lstdefinestyle{lldbsession} {
+    style=out,
+    alsoletter=-,
+    basicstyle=\ttfamily\lst@ifdisplaystyle\footnotesize\fi,% (using \lst@ifdisplaystyle to preserve normal font size for \lstinline in captions)
+    morekeywords={breakpoint,bt,continue,fdp-attach,fdp-hbreakpoint,fdp-interrupt,fdp-restore,fdp-save,kdp-remote,lldb,memory,p,read,register,run,set,write,x}
+}
+\lstdefinestyle{block} {
+    style=out,
+    language=C,
+    numbers=left,
+    numberstyle=\ttfamily\scriptsize\color[HTML]{858C93},
+}
+\lstdefinestyle{lldbagility} {
+    style=block,
+    language=Python,
+}
+\lstset{style=base}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+\hyphenation{iOS}
+\hyphenation{iPadOS}
+\hyphenation{LLDBagility}
+\hyphenation{lldbmacros}
+\hyphenation{macOS}
+\hyphenation{SockPuppet}
+\hyphenation{Winbagility}
+
+\newcommand\sourcelink[4]{%
+    \ifstrempty{#4}{%
+        \ifstrempty{#3}{%
+            \href{#1#2}{\path{#2}}%
+        }{%
+            \href{#1#2\#L#3}{\path{#2##L#3}}%
+        }%
+    }{%
+        \href{#1#2\#L#3}{\path{#2##L#3}}/\href{#1#2\#L#4}{\path{##L#4}}%
+    }%
+}
+\newcommand{\xnuurl} {https://github.com/apple/darwin-xnu/tree/xnu-4903.221.2/}
+\newcommand{\xnulink}[3] {\sourcelink{\xnuurl}{#1}{#2}{#3} \textsuperscript{\scriptsize{[XNU]}}}
+\newcommand{\footxnulink}[3] {\footnote{\xnulink{#1}{#2}{#3}}}
+\newcommand{\footxnulinksharp}[2] {\footnote{\href{\xnuurl#1\##2}{\path{#1###2}}}}
+\newcommand{\lldburl} {https://github.com/llvm/llvm-project/tree/llvmorg-8.0.0/lldb/}
+\newcommand{\lldblink}[3] {\sourcelink{\lldburl}{#1}{#2}{#3} \textsuperscript{\scriptsize{[LLDB]}}}
+\newcommand{\footlldblink}[3] {\footnote{\lldblink{#1}{#2}{#3}}}
+\newcommand{\lldbagilityurl} {https://github.com/quarkslab/LLDBagility/tree/v1.0.0/}
+\newcommand{\lldbagilitylink}[3] {\sourcelink{\lldbagilityurl}{#1}{#2}{#3} \textsuperscript{\scriptsize{[LLDBagility]}}}
+\newcommand{\footlldbagilitylink}[3] {\footnote{\lldbagilitylink{#1}{#2}{#3}}}
+
+\begin{document}
+\setcounter{secnumdepth}{2}
+
+\frontmatter
+\includepdf{content/fsp.pdf}
+\include{content/ack}
+\include{content/abs}
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\mainmatter
+\blindmathtrue
+\Blinddocument
+% \include{content/c01}
+
+% \appendix
+% \include{content/a01}
+
+\backmatter
+\nocite{*}% for printing all resources from the bibliography including the ones not explicitly cited
+\printnoidxglossaries
+\printbibliography[type=online,heading=bibintoc,title={Online sources}]
+\printbibliography[nottype=online,heading=bibintoc,title={Printed sources}]
+
+\glsaddallunused
+\end{document}

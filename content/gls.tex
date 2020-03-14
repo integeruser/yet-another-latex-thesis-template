@@ -1,0 +1,54 @@
+\newglossaryentry{aslr}{name={address space layout randomisation},description={a technique for hindering the exploitation of memory corruption vulnerabilities by randomising the memory location of key data areas, such as the position of the stack, heap and the base of the executable}}
+\newglossaryentry{addrsan}{name={address sanitisation},description={a technique to dynamically detect memory corruption bugs, such as use-after-free and out-of-bounds accesses to heap and stack, based on compiler instrumentation}}
+\newacronym{api}{API}{application programming interface}
+\newglossaryentry{binary}{name={binary},description={a computer file that is not a text file, in some contexts used as synonym for executable}}
+\newglossaryentry{bootarg}{name={boot-arg},description={an \gls{efi} firmware variable stored in \gls{nvram}, used to configure the system boot}}
+\newacronym{cpu}{CPU}{central processing unit}
+\newacronym{cve}{CVE}{Common Vulnerabilities and Exposures}
+\newglossaryentry{devicedriver}{name={device driver},description={a computer program for controlling a device attached to the computer, allowing to access the device functionalities without knowing how they are implemented in hardware}}
+\newglossaryentry{devicefile}{name={device file},description={an interface to a \gls{devicedriver} implemented as an ordinary file, so to be interacted with regular input/output \glspl{syscall}}}
+\newglossaryentry{dtrace}{name={DTrace},description={a dynamic tracing framework to instrument the kernel and troubleshoot problems on production systems in real time}}
+\newglossaryentry{dwarf}{name={DWARF},description={a standardized debugging data format, used to store information about a compiled computer program for use by debuggers}}
+\newglossaryentry{exception}{name={exception},description={an error condition in the \gls{cpu} occurring while this executes an instruction, such as division by zero}}
+\newdualentry{ept}{EPT}{Extended Page Tables}{Intel's implementation of the Second Level Address Translation (SLAT), a hardware-assisted virtualisation technology for accelerating the translation of guest physical memory addresses to host physical addresses}
+\newdualentry{efi}{EFI}{Extensible Firmware Interface}{a partition on a data storage device containing the bootloaders and applications to be launched at system boot by the Unified Extensible Firmware Interface (UEFI) firmware}
+\newacronym{eula}{EULA}{end-user license agreement}
+\newglossaryentry{executable}{name={executable},description={a file containing a computer program, often encoded in machine language}}
+\newdualentry{fdp}{FDP}{Fast Debugging Protocol}{an \gls{api} for \glsentrylong{vmi} and debugging}
+\newacronym{gui}{GUI}{graphical user interface}
+\newglossaryentry{hv}{name={hypervisor},description={a computer program that creates and manages the execution of \glsentrylongpl{vm}}}
+\newglossaryentry{interrupt}{name={interrupt},description={an input signal to the \gls{cpu} indicating the occurrence of an event}}
+\newdualentry{ip}{IP}{Internet Protocol}{the principal communication protocol used in the Internet}
+\newdualentry{kdk}{KDK}{Kernel Debug Kit}{a collection of useful material for \gls{xnu} debugging}
+\newglossaryentry{kernel}{name={kernel},description={the core of an \glsentrylong{os}, which controls everything that runs in the system by managing directly the hardware resources and allocating them to running processes}}
+\newglossaryentry{kernelspace}{name={kernel space},description={the memory area where the kernel execute}}
+\newglossaryentry{kext}{name={kext},long={kernel extension},longplural={kernel extensions},description={a macOS bundle containing additional code to be loaded into the kernel at run time, without the need to recompile or relink}}
+\newdualentry{kdp}{KDP}{Kernel Debugging Protocol}{the remote kernel debugging mechanism implemented in \gls{xnu}}
+\newglossaryentry{lldb}{name={LLDB},description={the debugger component of the LLVM project}}
+\newglossaryentry{lldbmacros}{name={lldbmacros},description={a set of scripts for debugging Darwin kernels in LLDB}}
+\newacronym{mac}{MAC}{media access control}
+\newglossaryentry{macho}{name={Mach-O},description={a file format for executables, object code, shared libraries, dynamically-loaded code, and core dumps}}
+\newdualentry{nmi}{NMI}{non-maskable interrupt}{a hardware \gls{interrupt} ignored by standard masking techniques}
+\newdualentry{nvram}{NVRAM}{non-volatile random-access memory}{random-access memory that retains data even without a power supply}
+\newacronym{poc}{PoC}{proof of concept}
+\newacronym{rsp}{RSP}{remote serial protocol}
+\newdualentry{sdk}{SDK}{software development kit}{a collection of software development tools in one installable package}
+\newacronym[shortplural={OSes}]{os}{OS}{operating system}
+\newdualentry{ram}{RAM}{random-access memory}{a type of computer memory in which items can be read or written in almost the same amount of time regardless of their physical location in the memory chip}
+\newdualentry{sip}{SIP}{System Integrity Protection}{a security mechanism for limiting the power of the \gls{superuser} in macOS}
+\newglossaryentry{superuser}{name={superuser},description={a special user account in possess of the highest privileges necessary for system administration, commonly referred to as \enquote{root}}}
+\newglossaryentry{syscall}{name={system call},long={system call},description={a mechanism implemented by \glsentrylong{os} kernels to allow processes to interface with the \gls{os} and request for services}}
+\newdualentry{tlb}{TLB}{translation lookaside buffer}{a cache that stores recent translations of virtual to physical memory addresses}
+\newglossaryentry{trap}{name={trap},description={an \gls{exception} that is reported immediately after the execution of the trapping instruction}}
+\newdualentry{udp}{UDP}{User Datagram Protocol}{a connectionless, message-oriented protocol for communications over \gls{ip}}
+\newglossaryentry{unixlike}{name={Unix-like},description={any \glsentrylong{os} either explicitly based on Unix or behaving similarly to it}}
+\newglossaryentry{userspace}{name={user space},description={the memory area where applications (e.g.\ user processes) execute}}
+\newdualentry{uuid}{UUID}{universally unique identifier}{a 128-bit number used to identify information in computer systems, typically generated in such a way that the probability it will be a duplicate is close enough to zero to be negligible}
+\newglossaryentry{uaf}{name={use-after-free},description={a class of memory corruption bugs that involves a computer program using a memory area after this has been already freed}}
+\newdualentry{vm}{VM}{virtual machine}{(system-level) a virtual representation of a real computer system}
+\newdualentry{vmi}{VMI}{virtual machine introspection}{a technique for monitoring the state of a running system-level \gls{vm}}
+\newacronym{vmm}{VMM}{virtual machine monitor}
+\newglossaryentry{wdt}{name={watchdog timer},description={a hardware timer that automatically generates a system reset if it's not reset periodically}}
+\newglossaryentry{x86}{name={x86},description={a family of complex instruction set architectures with variable instruction length, developed by Intel starting with the 8086 and 8088 microprocessors}}
+\newglossaryentry{x86-64}{name={x86-64},description={the 64-bit version of the \gls{x86} instruction set}}
+\newglossaryentry{xnu}{name={XNU},description={the kernel of the macOS and Darwin \glsentrylongpl{os}, among others. Short for \enquote{X is Not Unix}}}
