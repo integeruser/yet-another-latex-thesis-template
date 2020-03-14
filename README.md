@@ -1,6 +1,15 @@
 # yet-another-latex-thesis-template
+A clean and minimal LaTeX template: [sample-thesis.pdf](sample-thesis.pdf).
+
+## Requisites
+- Any LaTeX distribution?
+
+Tested with [MacTeX-2019](https://tug.org/mactex/).
 
 ## Usage
-- Compile with `latexmk -xelatex ./thesis.tex`.
+- Compile `sample-thesis.tex` using XeLaTeX:
 
-Tested on MacTeX 2019 (installed through [Homebrew](https://brew.sh) with `brew cask install mactex-no-gui`).
+        latexmk -xelatex ./sample-thesis.tex
+
+## Bibliography
+- [Tips on Writing a Thesis in LaTeX](http://www.khirevich.com/latex/)
