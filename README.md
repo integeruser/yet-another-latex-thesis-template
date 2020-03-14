@@ -1,5 +1,5 @@
 # yet-another-latex-thesis-template
-A clean and minimal LaTeX template: [sample-thesis.pdf](sample-thesis.pdf).
+A clean and minimal LaTeX template. [Sample chapter from my thesis](sample-thesis.pdf).
 
 ## Requisites
 - Any LaTeX distribution?
